@@ -17,6 +17,7 @@
 typedef struct {
     float Position[3];
     float Color[4];
+    float TexCoord[2]; // New
 }Vertex;
 
 //const Vertex Vertices[] = {
@@ -37,37 +38,146 @@ typedef struct {
 //    0, 1, 2,
 //    2, 3, 0
 //};
-const Vertex Vertices[] = {
-    {{1, -1, 0}, {1, 0, 0, 1}},
-    {{1, 1, 0}, {1, 0, 0, 1}},
-    {{-1, 1, 0}, {0, 1, 0, 1}},
-    {{-1, -1, 0}, {0, 1, 0, 1}},
-    {{1, -1, -1}, {1, 0, 0, 1}},
-    {{1, 1, -1}, {1, 0, 0, 1}},
-    {{-1, 1, -1}, {0, 1, 0, 1}},
-    {{-1, -1, -1}, {0, 1, 0, 1}}
-};
+//const Vertex Vertices[] = {
+//    {{1, -1, 0}, {1, 0, 0, 1}},
+//    {{1, 1, 0}, {1, 0, 0, 1}},
+//    {{-1, 1, 0}, {0, 1, 0, 1}},
+//    {{-1, -1, 0}, {0, 1, 0, 1}},
+//    {{1, -1, -1}, {1, 0, 0, 1}},
+//    {{1, 1, -1}, {1, 0, 0, 1}},
+//    {{-1, 1, -1}, {0, 1, 0, 1}},
+//    {{-1, -1, -1}, {0, 1, 0, 1}}
+//};
 
+//const Vertex Vertices[] = {
+//    // Front
+//    {{1, -1, 0}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{1, 1, 0}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{-1, 1, 0}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, -1, 0}, {0, 0, 0, 1}, {0, 0}},
+//    // Back
+//    {{1, 1, -2}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{-1, -1, -2}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{1, -1, -2}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, 1, -2}, {0, 0, 0, 1}, {0, 0}},
+//    // Left
+//    {{-1, -1, 0}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{-1, 1, 0}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{-1, 1, -2}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, -1, -2}, {0, 0, 0, 1}, {0, 0}},
+//    // Right
+//    {{1, -1, -2}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{1, 1, -2}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{1, 1, 0}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{1, -1, 0}, {0, 0, 0, 1}, {0, 0}},
+//    // Top
+//    {{1, 1, 0}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{1, 1, -2}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{-1, 1, -2}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, 1, 0}, {0, 0, 0, 1}, {0, 0}},
+//    // Bottom
+//    {{1, -1, -2}, {1, 0, 0, 1}, {TEX_COORD_MAX, 0}},
+//    {{1, -1, 0}, {0, 1, 0, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+//    {{-1, -1, 0}, {0, 0, 1, 1}, {0, TEX_COORD_MAX}},
+//    {{-1, -1, -2}, {0, 0, 0, 1}, {0, 0}}
+//};
+
+#define TEX_COORD_MAX   1
+const Vertex Vertices[] = {
+    // Front
+    {{1,  -1,  0}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{1,   1,  0}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{-1,  1,  0}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{-1, -1,  0}, {1, 1, 1, 1}, {0, 0}},
+    // Back
+    {{1,   1, -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{-1, -1, -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{1,  -1, -2}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{-1,  1, -2}, {1, 1, 1, 1}, {0, 0}},
+    // Left
+    {{-1, -1,  0}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{-1,  1,  0}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{-1,  1, -2}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{-1, -1, -2}, {1, 1, 1, 1}, {0, 0}},
+    // Right
+    {{1, -1,  -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{1,  1,  -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{1,  1,   0}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{1, -1,   0}, {1, 1, 1, 1}, {0, 0}},
+    // Top
+    {{1,  1,   0}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{1,  1,  -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{-1, 1,  -2}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{-1, 1,   0}, {1, 1, 1, 1}, {0, 0}},
+    // Bottom
+    {{1,  -1, -2}, {1, 1, 1, 1}, {TEX_COORD_MAX, 0}},
+    {{1,  -1,  0}, {1, 1, 1, 1}, {TEX_COORD_MAX, TEX_COORD_MAX}},
+    {{-1, -1,  0}, {1, 1, 1, 1}, {0, TEX_COORD_MAX}},
+    {{-1, -1, -2}, {1, 1, 1, 1}, {0, 0}}
+};
 const GLubyte Indices[] = {
     // Front
     0, 1, 2,
     2, 3, 0,
     // Back
-    4, 6, 5,
-    4, 7, 6,
+    4, 5, 6,
+    4, 5, 7,
     // Left
-    2, 7, 3,
-    7, 6, 2,
+    8, 9, 10,
+    10, 11, 8,
     // Right
-    0, 4, 1,
-    4, 1, 5,
+    12, 13, 14,
+    14, 15, 12,
     // Top
-    6, 2, 1,
-    1, 6, 5,
+    16, 17, 18,
+    18, 19, 16,
     // Bottom
-    0, 3, 7,
-    0, 7, 4
+    20, 21, 22,
+    22, 23, 20
 };
+
+const Vertex Vertices2[] = {
+    {{0.5, -0.5, 0.01}, {1, 1, 1, 1}, {1, 1}},
+    {{0.5, 0.5, 0.01}, {1, 1, 1, 1}, {1, 0}},
+    {{-0.5, 0.5, 0.01}, {1, 1, 1, 1}, {0, 0}},
+    {{-0.5, -0.5, 0.01}, {1, 1, 1, 1}, {0, 1}},
+};
+
+const GLubyte Indices2[] = {
+    1, 0, 2, 3
+};
+
+//const Vertex Vertices[] = {
+//    {{1, -1, 0}, {1, 0, 0, 1}, {1, 0}},
+//    {{1, 1, 0}, {1, 0, 0, 1}, {1, 1}},
+//    {{-1, 1, 0}, {0, 1, 0, 1}, {0, 1}},
+//    {{-1, -1, 0}, {0, 1, 0, 1}, {0, 0}},
+//    {{1, -1, -1}, {1, 0, 0, 1}, {1, 0}},
+//    {{1, 1, -1}, {1, 0, 0, 1}, {1, 1}},
+//    {{-1, 1, -1}, {0, 1, 0, 1}, {0, 1}},
+//    {{-1, -1, -1}, {0, 1, 0, 1}, {0, 0}}
+//};
+//
+//const GLubyte Indices[] = {
+//    // Front
+//    0, 1, 2,
+//    2, 3, 0,
+//    // Back
+//    4, 6, 5,
+//    4, 7, 6,
+//    // Left
+//    2, 7, 3,
+//    7, 6, 2,
+//    // Right
+//    0, 4, 1,
+//    4, 1, 5,
+//    // Top
+//    6, 2, 1,
+//    1, 6, 5,
+//    // Bottom
+//    0, 3, 7,
+//    0, 7, 4
+//};
 
 @interface DAGLView(){
     CAEAGLLayer *_eaglLayer;        // 视图层，必须在CAEAGLLayer上才能绘制OpenGLES内容
@@ -82,7 +192,16 @@ const GLubyte Indices[] = {
     GLuint       _modelViewUniform;
     GLuint       _currentRotation;
     GLuint       _depthRenderBuffer;
-    GLuint       _currentScale;
+
+    GLuint       _floorTexture;
+    GLuint       _fishTexture;
+    GLuint       _texCoordSlot;
+    GLuint       _textureUniform;
+
+    GLuint       _vertexBuffer;
+    GLuint       _indexBuffer;
+    GLuint       _vertexBuffer2;
+    GLuint       _indexBuffer2;
 }
 
 @end
@@ -94,7 +213,6 @@ const GLubyte Indices[] = {
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        _currentScale = 1.0;
         [self setupGLLayer];
         [self setupGLContext];
         [self setupDepthRenderBuffer];
@@ -103,6 +221,7 @@ const GLubyte Indices[] = {
         [self compileShaders];
         [self setupVBOs];
         [self setupDisplayLink];
+        [self setupTexs];
 //        [self renderVBO];
 //        [self render];
     }
@@ -181,16 +300,12 @@ const GLubyte Indices[] = {
     CC3GLMatrix *modelView = [CC3GLMatrix matrix];
     [modelView populateFromTranslation:CC3VectorMake(sin(CACurrentMediaTime()), 0, -7)];
     
-    _currentScale += 0.1;
-    if (_currentScale > 6.0) {
-        _currentScale = 1.0;
-    }
-    [modelView scaleBy:CC3VectorMake(_currentScale, _currentScale, 1.0)];
-    
     _currentRotation += displayLink.duration * 90;
     [modelView rotateBy:CC3VectorMake(_currentRotation, _currentRotation, 0)];
-    
     glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
+
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     //设置UIView中用于渲染的部分
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
     //为vertex shader的两个输入参数配置两个合适的值
@@ -210,8 +325,37 @@ const GLubyte Indices[] = {
      */
     glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
     glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid *)(sizeof(float) * 3));
+
+    glVertexAttribPointer(_texCoordSlot, 2, GL_FLOAT, GL_FALSE,
+                          sizeof(Vertex), (GLvoid*) (sizeof(float) * 7));
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _floorTexture);
+    glUniform1i(_textureUniform, 0);
     
     glDrawElements(GL_TRIANGLE_STRIP, sizeof(Indices)/sizeof(Indices[0]), GL_UNSIGNED_BYTE, 0);
+
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer2);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer2);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, _fishTexture);
+    glUniform1i(_textureUniform, 0);
+    glUniformMatrix4fv(_modelViewUniform, 1, 0, modelView.glMatrix);
+
+    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+    glVertexAttribPointer(_colorSlot, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 3));
+    glVertexAttribPointer(_texCoordSlot, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (GLvoid*) (sizeof(float) * 7));
+
+    glDrawElements(GL_TRIANGLE_STRIP, sizeof(Indices2)/sizeof(Indices2[0]), GL_UNSIGNED_BYTE, 0);
+
+    /**
+     glBlendFunc(GL_ONE, GL_ZERO) 完全使用源颜色, 完全不使用目标颜色. 和不使用blend的时候一致.
+     glBlendFunc(GL_ZERO, GL_ONE) 完全不使用源颜色, 完全使用目标颜色. 即原图没有变化.
+     glBlendFunc(GL_ONE, GL_ONE) 两种颜色的直接相加.
+     */
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
     
     [_eaglContext presentRenderbuffer:GL_RENDERBUFFER];
 }
@@ -244,12 +388,17 @@ const GLubyte Indices[] = {
     //获取脚本变量指针  注意： 名字要和脚本一致
     _positionSlot = glGetAttribLocation(glProgram, "Position");
     _colorSlot = glGetAttribLocation(glProgram, "SourceColor");
-    _projectionUniform = glGetUniformLocation(glProgram, "Projection");
-    _modelViewUniform = glGetUniformLocation(glProgram, "Modelview");
     //启用数据
     glEnableVertexAttribArray(_positionSlot);
     glEnableVertexAttribArray(_colorSlot);
-    
+
+    _projectionUniform = glGetUniformLocation(glProgram, "Projection");
+    _modelViewUniform = glGetUniformLocation(glProgram, "Modelview");
+
+    _texCoordSlot = glGetAttribLocation(glProgram, "TexCoordIn");
+    glEnableVertexAttribArray(_texCoordSlot);
+    _textureUniform = glGetUniformLocation(glProgram, "Texture");
+
 }
 
 
@@ -258,23 +407,39 @@ const GLubyte Indices[] = {
  缓存顶点数据的OpenGL对象
  */
 - (void)setupVBOs {
-    GLuint vertexBuffer ;
-    glGenBuffers(1, &vertexBuffer);
+    glGenBuffers(1, &_vertexBuffer);
     //绑定 vertexBuffer 指向GL_ARRAY_BUFFER
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer);
     //传递顶点数据到OpenGL-land
     glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
     
-    GLuint indexBuffer;
-    glGenBuffers(1, &indexBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+    glGenBuffers(1, &_indexBuffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices), Indices, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &_vertexBuffer2);
+    glBindBuffer(GL_ARRAY_BUFFER, _vertexBuffer2);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices2), Vertices2, GL_STATIC_DRAW);
+
+    glGenBuffers(1, &_indexBuffer2);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _indexBuffer2);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(Indices2), Indices2, GL_STATIC_DRAW);
 }
 
 - (void)setupDisplayLink {
     CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(renderVBO:)];
     [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 }
+
+
+- (void)setupTexs {
+    _floorTexture = [EAGLUtils setupTextureImage:[UIImage imageNamed:@"65536391_p0.png"]];//[EAGLUtils setupTexture:@"tile_floor.png"];
+//    _fishTexture = [EAGLUtils setupTexture:@"item_powerup_fish.png"];
+    _fishTexture = [EAGLUtils setupTextureImage:[UIImage imageNamed:@"item_powerup_fish.png"]];
+}
+
+
+
 
 
 
